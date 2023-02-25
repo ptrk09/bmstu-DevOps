@@ -32,6 +32,15 @@
 2. Отключить ВМ, войти в настройки второй ВМ
 2. Добавить сетевой адаптор (по умолчанию уже должен быть)
 3. Для сетевого адаптора необходимо выбрать источник `Host-Only`
+4. Ввести команды ниже:
+```
+iptables -P FORWARD DROP # we aren't a router
+iptables -A INPUT -m state --state INVALID -j DROP
+iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A INPUT -s <ip адрес ВМ1> -j ACCEPT
+iptables -P INPUT DROP # Drop everything we don't accept
+```
 
 ### Проверка
 1. Обратиться на хостовой машине к ВМ1
