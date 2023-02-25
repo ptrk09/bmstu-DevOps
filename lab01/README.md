@@ -38,7 +38,7 @@ iptables -P FORWARD DROP # we aren't a router
 iptables -A INPUT -m state --state INVALID -j DROP
 iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A INPUT -i lo -j ACCEPT
-iptables -A INPUT -s <ip адрес ВМ1> -j ACCEPT
+iptables -A INPUT -s <ip адрес ВМ1 в сети виртуальных машин (например 10.37.129.3)> -j ACCEPT 
 iptables -P INPUT DROP # Drop everything we don't accept
 ```
 
