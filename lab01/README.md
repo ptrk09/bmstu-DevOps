@@ -44,3 +44,5 @@ iptables -P INPUT DROP # Drop everything we don't accept
 
 ### Проверка
 1. Обратиться на хостовой машине к ВМ1
+
+Можно .map {($0.rawValue, 2)}
